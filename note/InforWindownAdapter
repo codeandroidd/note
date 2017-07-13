@@ -1,0 +1,41 @@
+public class CustemInforAdapter implements GoogleMap.InfoWindowAdapter {
+    Activity context;
+    NhaHang nhahang;
+    public CustemInforAdapter(Activity context,NhaHang nhahang){
+        this.context=context;
+        this.nhahang=nhahang;
+
+    }
+    @Override
+    public View getInfoWindow(Marker marker) {
+        return null;
+    }
+
+    @Override
+    public View getInfoContents(Marker marker) {
+        LayoutInflater inflater=this.context.getLayoutInflater();
+        View row=inflater.inflate(R.layout.item,null);
+        ImageView imgHinh= (ImageView) row.findViewById(R.id.imgHinh);
+        TextView txtTen= (TextView) row.findViewById(R.id.txtTen);
+        imgHinh.setImageResource(nhahang.getHinh());
+        txtTen.setText(nhahang.getTen());
+        return row;
+    }
+    
+    
+    //bên Map
+    
+    
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        Intent intent=getIntent();
+        NhaHang nh= (NhaHang) intent.getSerializableExtra("NhaHang");
+
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(nh.getVido(), nh.getKinhdo());
+        Marker marker=mMap.addMarker(new MarkerOptions().position(sydney).title(nh.toString()));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,16));
+       --> mMap.setInfoWindowAdapter(new CustemInforAdapter(MapsActivity.this,nh));
+       --> marker.showInfoWindow();
+    }

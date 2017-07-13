@@ -1,0 +1,68 @@
+public class doFileImage {
+    public static final String myFolder="/DemodoFileImage/";
+    public static boolean witertoSD(Bitmap bitmap, String name, Context context){
+        //create full path from sd card
+        try {
+            String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + myFolder;
+            File file = new File(fullPath);
+            if (!file.exists())
+                file.mkdirs();
+
+            File myFile = new File(fullPath, name);
+            if (!myFile.exists())
+                myFile.createNewFile();
+            //create fileoutput stream
+            FileOutputStream fos=new FileOutputStream(myFile);
+            bitmap.compress(Bitmap.CompressFormat.PNG,100,fos);
+            fos.flush();
+            fos.close();
+
+        }catch(Exception e){
+            return false;
+        }
+
+        return true;
+    }
+    public static boolean writeImagetoInternal(Bitmap bitmap, String name, Context context){
+        try {
+            FileOutputStream fos=context.openFileOutput(name,Context.MODE_PRIVATE);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+           return false;
+        }
+        return  true;
+    }
+    public static Bitmap readImage(String name,Context context){
+        //read from sdcard
+        Bitmap bitmap=null;
+        String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + myFolder+"/"+name;
+        try{
+            bitmap= BitmapFactory.decodeFile(fullPath);
+
+        }catch(Exception e){
+
+        }
+        //read from internal memory
+        File myFile=context.getFileStreamPath(name);
+        try {
+            FileInputStream fis=new FileInputStream(myFile);
+            bitmap=BitmapFactory.decodeStream(fis);
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
+    }
+    public static void deleteImage(String name,Context context){
+        //delete internal memory
+        context.deleteFile(name);
+        //delete sd card
+        String fullPath = Environment.getExternalStorageDirectory().getAbsolutePath() + myFolder+"/"+name;
+        File myFile=new File(fullPath);
+        myFile.delete();
+
+    }
+}

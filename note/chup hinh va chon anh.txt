@@ -1,0 +1,31 @@
+private void takepicture(){
+    Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    startActivityForResult(intent,request_take_photo);
+}
+private void choosephoto(){
+    Intent intent=new Intent(Intent.ACTION_PICK);
+    intent.setType("image/*");
+    startActivityForResult(intent,request_choose_photo);
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if(resultCode==RESULT_OK)
+        if(requestCode==request_choose_photo){
+
+            try {
+                Uri uriimage=data.getData();
+                InputStream is=getContentResolver().openInputStream(uriimage);
+                Bitmap bitmap=BitmapFactory.decodeStream(is);
+                imgAnhDaiDien.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }else if(requestCode==request_take_photo){
+            Bitmap bitmap= (Bitmap) data.getExtras().get("data");
+            imgAnhDaiDien.setImageBitmap(bitmap);
+
+        }
+}
+
