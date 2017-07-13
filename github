@@ -57,7 +57,12 @@ cach 1.git add namefile
 cach 2:git commit -a -m "noi dung"
 ->git push origin master
 ------------------------------------------------------------
-
+-tao tag cho commit gan nhat(cuoi cung):
++git tag tentag
++xem danh sach tag:git tag
++xem thong tin cua lanf commit voi tag da gan:git show ten_tag
+--------------------------------------------------------------
+-Them tag cho commit cu
 
 
 
