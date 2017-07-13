@@ -70,14 +70,19 @@ git checkout -b ten_branch ten_tag:Luc nay ban da tu dong chuyen sang branch moi
 de push cai brach moi len:git push origin ten_brach
 -De chuyen ve branch master lai
 git checkout master
+-----------------------------------------
+-gop du lieu tu 1 branch nhanh sang mater,luu y branch do da duoc commit
++git checkout master
++git merge branch_nhanh
++ls
+---------------------------------
+-xoa 1 branch
++git branch -d ten_branch
+
 ----------------------------------------------
 --Cap nhat du lieu tu tren cloud ve
 	git pull origin master
-<<<<<<< HEAD
-
-=======
--------------------------------------------
->>>>>>> cersion1
+---------------------------------------------
 
 
 
