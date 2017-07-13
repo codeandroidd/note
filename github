@@ -61,6 +61,9 @@ cach 2:git commit -a -m "noi dung"
 +git tag tentag
 +xem danh sach tag:git tag
 +xem thong tin cua lanf commit voi tag da gan:git show ten_tag
+--------------------------------------------------------
+-xem toàn bo branch dang co
+	git branch 
 --------------------------------------------------------------
 -Nhap tag vao brach
 git checkout -b ten_branch ten_tag:Luc nay ban da tu dong chuyen sang branch moi thay vi master ban dau voi ten tag da duoc dinh nghia
@@ -70,7 +73,11 @@ git checkout master
 ----------------------------------------------
 --Cap nhat du lieu tu tren cloud ve
 	git pull origin master
+<<<<<<< HEAD
 
+=======
+-------------------------------------------
+>>>>>>> cersion1
 
 
 
