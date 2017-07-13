@@ -1,0 +1,65 @@
+khoi tao du an 1 lan tren repository sau do clone ve may 1 lan
+push:day len 
+pull(fetch/pearge): lay ve
+
+ten mac dinh cua remote la: origin
+co 7 buoc 
+1.git pull ....
+2.git checkout-b (tach ra 1 nhanh moi)
+3.developing
+4.commit(du lieu van co no may minh)
+5.pull origin 
+6.push 
+7.pull request
+nhanh master va develop khong bao gio dc push len(no chi co mot)
+1 du an co 3 server:
++dev o local
++staging
++production
+*cac su dung
+-tao file rong:mkdir tenfile
+-dinh dang no la file git:
+----------------------------------
+- git status:xem trang thai git
+----------------------------------
+-git log:xem lich su commit
+--------------------------------------
+-git remote add origin +address:lien ket file local voi repository
+------------------------------------------
+-tao file moi va commit
++touch file.txt
++git commit -m "Noi dung" :moi chi danh dau no chua dua len repository
+-------------------------------
+-track file de dua len cloud:git add file.txt
+----------------------------------------------
+kiem tra xem da track chua:git status
+--------------------------------------
+-push len cloud:git push origin master
+-----------------------------------------
+--de xoa file:
+-git rm new.txt
+-check trang thai:git status ,nhung viec xoa do van chuaa xac nhan,phai commit
+-git commit -m"da xoa":o day no chi xoa o local van chua dong bo o cloud
+-kiem tra danh sach cacs file o local:l
+-Nen de dong bo xoa tran cloud thi ban phai push la:git push origin master
+--------------------------------------------
+--muon dong bo lay file tren cloud ve 
+-tao ra file moi mkdir new
+-dong bo du clone lieu xong file:
++dung lenh cd de vao file
++git clone http(dia chi)
+-de cap nhat du lieu tren cloud khi co su thay doi ve local
++git pull origin master
+--------------------------------------------------------
+--Neu co 1 file torng local thay doi,de dong bo hoa voi cloud:
+cach 1.git add namefile
+	git commit -m "noi dung"	
+cach 2:git commit -a -m "noi dung"
+->git push origin master
+------------------------------------------------------------
+
+
+
+
+
+
